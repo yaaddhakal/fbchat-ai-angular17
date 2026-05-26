@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* styles.scss */
+
+/* Success toast */
+.mat-mdc-snack-bar-container.bg-green-600 {
+  background-color: #16a34a !important; /* Tailwind green-600 */
+  color: #fff !important;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  font-weight: 500;
+}
+
+/* Error toast */
+.mat-mdc-snack-bar-container.bg-red-600 {
+  background-color: #dc2626 !important; /* Tailwind red-600 */
+  color: #fff !important;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  font-weight: 500;
+}
+
+/* Info toast */
+.mat-mdc-snack-bar-container.bg-blue-600 {
+  background-color: #2563eb !important; /* Tailwind blue-600 */
+  color: #fff !important;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  font-weight: 500;
+}

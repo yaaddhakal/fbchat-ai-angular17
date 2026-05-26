@@ -1,0 +1,49 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-900">
+  <div class="w-full max-w-sm bg-gray-800 p-6 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold text-white mb-6 text-center">Login</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+  <!-- Username -->
+  <div>
+    <label class="block text-gray-300 mb-1">Username</label>
+    <input type="text" formControlName="username"
+      class="w-full px-3 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    @if (form.get('username')?.invalid && form.get('username')?.touched) {
+      <div class="text-red-400 text-sm">Username is required</div>
+    }
+  </div>
+
+  <!-- Password -->
+  <div>
+    <label class="block text-gray-300 mb-1">Password</label>
+    <input type="password" formControlName="password"
+      class="w-full px-3 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    @if (form.get('password')?.invalid && form.get('password')?.touched) {
+      <div class="text-red-400 text-sm">Password is required</div>
+    }
+  </div>
+
+  <!-- Error message -->
+  @if (errorMessage) {
+    <div class="text-red-400 text-sm mt-2">{{ errorMessage }}</div>
+  }
+
+  <button type="submit"
+  [disabled]="loading"
+  class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 flex items-center justify-center">
+  
+  <span *ngIf="!loading">Login</span>
+  
+  <span *ngIf="loading" class="flex items-center">
+    <svg class="animate-spin h-5 w-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor"
+        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+    </svg>
+    Logging in…
+  </span>
+</button>
+</form>
+
+  </div>
+</div>
