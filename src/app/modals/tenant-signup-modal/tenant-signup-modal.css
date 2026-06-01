@@ -1,0 +1,26 @@
+/* tenant-signup-modal.component.css */
+.ng-custom .ng-select-container {
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  background-color: #f9f9ff;
+  color: #1e1e1e;
+  min-height: 42px;
+}
+
+.ng-custom .ng-placeholder {
+  color: #9ca3af;
+}
+
+.ng-custom.ng-select-focused .ng-select-container {
+  border-color: #a855f7;
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.3);
+}
+
+.ng-custom .ng-option-selected {
+  background-color: #f3e8ff;
+  color: #7e22ce;
+}
+
+.ng-custom .ng-option-highlighted {
+  background-color: #ede9fe;
+}

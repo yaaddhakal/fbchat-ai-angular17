@@ -1,0 +1,20 @@
+<!-- shared/spinner/spinner.component.html -->
+
+<!-- Full screen overlay -->
+<div *ngIf="fullScreen"
+     class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+  <div class="bg-white rounded-xl p-6 flex flex-col items-center shadow-xl gap-3">
+    <div [ngClass]="spinnerSize"
+         class="rounded-full border-4 border-purple-200 border-t-purple-600 animate-spin">
+    </div>
+    <p class="text-gray-600 text-sm font-medium">{{ message }}</p>
+  </div>
+</div>
+
+<!-- Inline spinner -->
+<div *ngIf="!fullScreen" class="flex flex-col items-center justify-center gap-2 py-4">
+  <div [ngClass]="spinnerSize"
+       class="rounded-full border-4 border-purple-200 border-t-purple-600 animate-spin">
+  </div>
+  <p *ngIf="message" class="text-gray-500 text-sm">{{ message }}</p>
+</div>

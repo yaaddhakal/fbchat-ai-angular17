@@ -6,7 +6,7 @@
   <!-- Username -->
   <div>
     <label class="block text-gray-300 mb-1">Username</label>
-    <input type="text" formControlName="username"
+    <input type="text" value="mainadmin" formControlName="username"
       class="w-full px-3 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
     @if (form.get('username')?.invalid && form.get('username')?.touched) {
       <div class="text-red-400 text-sm">Username is required</div>

@@ -52,9 +52,9 @@ loading = false;
         localStorage.setItem('refreshToken', data.refreshToken);
         localStorage.setItem('username', data.username);
         localStorage.setItem('userType', data.userType);
-        localStorage.setItem('tenantName', data.tenantName);
-        localStorage.setItem('tenantIndustryId', data.tenantIndustryId);
- localStorage.setItem('userId', data.userId);
+        // localStorage.setItem('tenantName', data.tenantName);
+        // localStorage.setItem('tenantIndustryId', data.tenantIndustryId.toString());
+ localStorage.setItem('userId', data.userId.toString());
           this.toast.success('Login successful');
         const userType = data.userType?.toLowerCase();
         if (userType === 'sysuser' || userType === 'both') {

@@ -1,0 +1,67 @@
+<div class="min-h-screen bg-gradient-to-r from-blue-600 to-purple-700 flex flex-col">
+
+  <!-- Header -->
+  <header class="flex justify-between items-center px-8 py-4 text-white">
+    <h1 class="text-2xl font-bold">FBChat AI</h1>
+    <nav class="space-x-6">
+      <a (click)="goToLogin()" class="hover:text-yellow-300 cursor-pointer">Login</a>
+      <a (click)="openSignup()" class="hover:text-yellow-300 cursor-pointer">Signup</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <main class="flex flex-col items-center justify-center flex-grow text-center text-white px-6">
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+      AI‑Powered Facebook Chatbot
+    </h2>
+    <p class="text-lg md:text-xl mb-8 max-w-2xl">
+      Free trial, then subscription. Let AI learn your content and engage customers smarter.
+    </p>
+
+    <div class="space-x-4">
+      <button (click)="goToLogin()"
+              class="bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold shadow hover:bg-yellow-500">
+        Login
+      </button>
+      <button (click)="openSignup()"
+              class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold shadow hover:bg-purple-700">
+        Signup
+      </button>
+    </div>
+  </main>
+
+  <!-- Features -->
+  <section class="bg-white text-gray-800 py-12">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <div>
+        <div class="text-4xl mb-2">⚡</div>
+        <h3 class="font-bold text-xl mb-2">Quick Setup</h3>
+        <p>Connect your FB page in minutes and start chatting instantly.</p>
+      </div>
+      <div>
+        <div class="text-4xl mb-2">🤖</div>
+        <h3 class="font-bold text-xl mb-2">AI Learns Content</h3>
+        <p>Upload FAQs, docs, or flows — AI adapts to your business.</p>
+      </div>
+      <div>
+        <div class="text-4xl mb-2">💼</div>
+        <h3 class="font-bold text-xl mb-2">Free Trial → Subscription</h3>
+        <p>Start free, then scale with affordable subscription plans.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-white py-6">
+    <p>© 2026 FBChat AI — Powered by ASP.NET Core + Angular 17</p>
+  </footer>
+
+</div>
+
+<!-- ✅ Modal outside main div, at bottom -->
+@if (showSignup) {
+  <app-tenant-signup-modal
+    (closed)="closeSignup()"
+    (signupSuccess)="onSignupSuccess($event)">
+  </app-tenant-signup-modal>
+}
