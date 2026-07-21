@@ -153,12 +153,20 @@ isSubmitting       = false;
 
     this.tenantService.signupTenant(payload).subscribe({
       next: (res) => {
-        this.isSubmitting = false;
-        if (res.success)
-          this.signupSuccess.emit(res.data);
         
-        else
+  console.log('Verify response:', res); 
+        console.log('Signup response:', res);
+        this.isSubmitting = false;
+        if (res.success) {
+          if (!res.data.isEmailSent) {
+            // ✅ show warning in OTP modal
+            this.errorMessage = 'Email failed. Please click Resend OTP.';
+          }
+          this.signupSuccess.emit(res.data);  // ✅ always open OTP modal
+        } else {
           this.errorMessage = res.message ?? 'Signup failed';
+        }
+         
       },
       error: () => {
         this.isSubmitting = false;

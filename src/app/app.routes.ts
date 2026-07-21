@@ -12,7 +12,7 @@ export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'sys-dashboard', component: SysDashboard, canActivate: [authGuard] },
   { path: 'tenant-dashboard', component: TenantDashboard, canActivate: [authGuard] },
-  { path: 'signup', component: TenantSignupModal }
+ {path:'Spinner', component: TenantSignupModal}
 
 ];
 

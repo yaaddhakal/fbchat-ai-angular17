@@ -6,6 +6,7 @@ import { API_CONFIG } from '../config/api.config';
 import { TenantModel, IndustryModel } from '../models/user-signup.model';
 import { TenantSignupModel } from '../models/user-signup.model';
 import { ApiResponseModel } from '../models/authResponse.model';
+import { VerifyOtpModel, ResendOtpModel } from '../models/otp.model';
 
 @Injectable({ providedIn: 'root' })
 export class TenantService {
@@ -41,4 +42,21 @@ export class TenantService {
       { headers: this.headers }
     );
   }
+
+  // add these two methods to tenant.service.ts
+verifyOtp(payload: VerifyOtpModel): Observable<ApiResponseModel<any>> {
+  return this.http.post<ApiResponseModel<any>>(
+    `${this.apiUrl}/verify-otp`,
+    payload,
+    { headers: this.headers }
+  );
+}
+
+resendOtp(payload: ResendOtpModel): Observable<ApiResponseModel<any>> {
+  return this.http.post<ApiResponseModel<any>>(
+    `${this.apiUrl}/resend-otp`,
+    payload,
+    { headers: this.headers }
+  );
+}
 }

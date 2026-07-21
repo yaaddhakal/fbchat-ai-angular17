@@ -1,0 +1,91 @@
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-2xl shadow-xl p-6 w-full max-w-sm relative">
+
+    <!-- Close -->
+    <button (click)="dismiss()"
+            class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 text-xl font-bold">
+      ✕
+    </button>
+
+    <!-- Full screen spinner on verify -->
+    <app-spinner
+      *ngIf="isVerifying"
+      [fullScreen]="true"
+      message="Verifying...">
+    </app-spinner>
+
+    <!-- Header -->
+    <div class="text-center mb-6">
+      <div class="text-5xl mb-3">📧</div>
+      <h2 class="text-xl font-semibold text-gray-800">Verify Your Email</h2>
+      <p class="text-sm text-gray-500 mt-1">
+        We sent a code to <span class="font-medium text-purple-600">{{ maskedEmail }}</span>
+      </p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onVerify()" class="space-y-4">
+
+      <!-- OTP Input -->
+      <div>
+        <label class="block text-sm font-medium text-gray-600 mb-1">Enter 6-digit code</label>
+        <input formControlName="otpCode"
+               type="text"
+               maxlength="6"
+               placeholder="------"
+               class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-[#f9f9ff]
+                      text-gray-800 text-center text-2xl font-bold tracking-widest
+                      placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-400" />
+        <p *ngIf="form.get('otpCode')?.invalid && form.get('otpCode')?.touched"
+           class="text-red-500 text-xs mt-1">Enter a valid 6-digit code</p>
+      </div>
+
+      <!-- Countdown timer -->
+      <div class="text-center">
+        <span *ngIf="!timerExpired"
+              class="text-sm text-gray-500">
+          Code expires in
+          <span [class]="timeLeft <= 60 ? 'text-red-500 font-bold' : 'text-purple-600 font-bold'">
+            {{ formattedTime }}
+          </span>
+        </span>
+        <span *ngIf="timerExpired" class="text-red-500 text-sm font-medium">
+          Code expired!
+        </span>
+      </div>
+
+      <!-- Verify button -->
+      <button type="submit"
+              [disabled]="form.invalid || isVerifying || timerExpired"
+              class="w-full bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold
+                     hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed
+                     transition duration-200">
+        {{ isVerifying ? 'Verifying...' : 'Verify' }}
+      </button>
+
+      <!-- Resend button (shows when timer expires) -->
+      <button type="button"
+              *ngIf="timerExpired"
+              (click)="onResend()"
+              [disabled]="isResending"
+              class="w-full bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold
+                     hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed
+                     transition duration-200">
+        {{ isResending ? 'Sending...' : 'Resend OTP' }}
+      </button>
+
+    </form>
+
+    <!-- Success message -->
+    <div [hidden]="!successMessage"
+         class="text-green-600 text-sm mt-3 text-center font-medium">
+      {{ successMessage }}
+    </div>
+
+    <!-- Error message -->
+    <div [hidden]="!errorMessage"
+         class="text-red-500 text-sm mt-3 text-center">
+      {{ errorMessage }}
+    </div>
+
+  </div>
+</div>

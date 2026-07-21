@@ -65,3 +65,10 @@
     (signupSuccess)="onSignupSuccess($event)">
   </app-tenant-signup-modal>
 }
+@if (showOtp) {
+    <app-otp-modal
+        [user]="currentUser"
+        (closed)="showOtp = false"
+        (verifySuccess)="onVerifySuccess($event)">
+    </app-otp-modal>
+}
